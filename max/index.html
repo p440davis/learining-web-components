@@ -6,11 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Web components</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      --primary: lightblue;
+      font-family: sans-serif;
+    }
+  </style>
   <script src="confirm-link.js"></script>
   <script src="tooltip.js"></script>
+  <script src="modal.js"></script>
 </head>
 
 <body>
+  <button type="button" onclick="document.getElementById('confirm').hidden = false">Open modal</button>
+  <pd-modal id="confirm" hidden class="close">
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt culpa suscipit possimus odio eligendi
+      perspiciatis aut officia deleniti recusandae dignissimos, quos impedit cumque, quae minus itaque veritatis
+      similique libero dolores.
+      <a is="pd-confirm-link" href="https://google.com">Confirm link</a>
+    </p>
+  </pd-modal>
+
   <h1>
     <pd-tooltip text="aka Custom Elements">Web components</pd-tooltip> are awesome!
   </h1>
