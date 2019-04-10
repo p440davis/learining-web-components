@@ -9,9 +9,16 @@ class Modal extends HTMLElement {
         left: 0;
         right: 0;
         height: 100vh;
-        background: black;
-        opacity: 0.8;
+        background: rgba(0,0,0,0.8);
         z-index: 10;
+        opacity: 1;
+        transition: all 0.5s ease-out;
+      }
+
+      :host([hidden]) {
+        display: block;
+        pointer-events: none;
+        opacity: 0;
       }
 
       main {
@@ -24,10 +31,15 @@ class Modal extends HTMLElement {
         background: gainsboro;
         border-radius: 3rem;
         box-shadow: 0 0.5rem 2rem rgba(0,0,0,0.8);
+        transition: all 0.5s ease-out;
+      }
+
+      :host([hidden]) main {
+        top: -100vh;
       }
 
       header, section, footer {
-        padding: 1rem 2rem 2rem;
+        padding: 1rem 2rem;
       }
 
       footer {
@@ -38,26 +50,41 @@ class Modal extends HTMLElement {
 
     <main>
       <header>
-        <h1>You sure?</h1>
+        <slot name="title">Please confirm</slot>
       </header>
       <section>
-        <pd-tooltip text="Yo!">Good news</pd-tooltip>
         <slot></slot>
       </section>
       <footer>
-        <button class="close">Nope</button>
-        <button>Yup</button>
+        <button class="cancel">Nope</button>
+        <button class="confirm">Yup</button>
       </footer>
     </main>
   `
-  _cancelButton = this._root.getElementById('cancel')
+  // _slots = this._root.querySelectorAll('slot')
+  // _slot1Change = this._slots[0].addEventListener('slotchange', e => console.dir(this._slots[0].assignedNodes()))
+
   _click = this.addEventListener('click', e => this._onClick(this._target(e)))
 
-  _target = (e) => e.composedPath()[0];
+  _target = e => e.composedPath()[0]
 
-  _onClick = target => target.classList.contains("close") && this.hide()
+  _onClick = target => {
+    let eventNames = ['confirm', 'cancel']
+    eventNames.forEach(eventName => {
+      if (target.classList.contains(eventName)) {
+        this.hide()
+        this._event(eventName)
+      }
+    })
+  }
 
   hide = () => this.hidden = true
+  show = () => this.hidden = false
+
+  _event = eventName => {
+    const event = new Event(eventName)
+    this.dispatchEvent(event)
+  }
 }
 
-customElements.define("pd-modal", Modal)
+customElements.define('pd-modal', Modal)

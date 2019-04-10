@@ -22,12 +22,12 @@
 </head>
 
 <body>
-  <button type="button" onclick="document.getElementById('confirm').hidden = false">Open modal</button>
-  <pd-modal id="confirm" hidden class="close">
+  <button type="button" onclick="document.getElementById('confirm').show()">Open modal</button>
+  <pd-modal id="confirm" hidden class="cancel">
+    <h2 slot="title">This is the title of the modal</h2>
     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt culpa suscipit possimus odio eligendi
       perspiciatis aut officia deleniti recusandae dignissimos, quos impedit cumque, quae minus itaque veritatis
       similique libero dolores.
-      <a is="pd-confirm-link" href="https://google.com">Confirm link</a>
     </p>
   </pd-modal>
 
@@ -40,6 +40,16 @@
   </h2>
 
   <a is="pd-confirm-link" href="https://google.com">Confirm link</a>
+
+  <script>
+    const modal = document.getElementById('confirm')
+    modal.addEventListener('confirm', () => {
+      console.log('confirmed')
+    })
+    modal.addEventListener('cancel', () => {
+      console.log('cancelled')
+    })
+  </script>
 </body>
 
 </html>
