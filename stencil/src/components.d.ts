@@ -12,36 +12,53 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface PdSideDrawer {
-    'name': string;
+  interface RcnShowHide {
+    'for': string;
   }
-  interface PdSideDrawerAttributes extends StencilHTMLAttributes {
-    'name'?: string;
+  interface RcnShowHideAttributes extends StencilHTMLAttributes {
+    'for'?: string;
+  }
+
+  interface RcnSideDrawer {
+    'id': string;
+  }
+  interface RcnSideDrawerAttributes extends StencilHTMLAttributes {
+    'id'?: string;
   }
 }
 
 declare global {
   interface StencilElementInterfaces {
-    'PdSideDrawer': Components.PdSideDrawer;
+    'RcnShowHide': Components.RcnShowHide;
+    'RcnSideDrawer': Components.RcnSideDrawer;
   }
 
   interface StencilIntrinsicElements {
-    'pd-side-drawer': Components.PdSideDrawerAttributes;
+    'rcn-show-hide': Components.RcnShowHideAttributes;
+    'rcn-side-drawer': Components.RcnSideDrawerAttributes;
   }
 
 
-  interface HTMLPdSideDrawerElement extends Components.PdSideDrawer, HTMLStencilElement {}
-  var HTMLPdSideDrawerElement: {
-    prototype: HTMLPdSideDrawerElement;
-    new (): HTMLPdSideDrawerElement;
+  interface HTMLRcnShowHideElement extends Components.RcnShowHide, HTMLStencilElement {}
+  var HTMLRcnShowHideElement: {
+    prototype: HTMLRcnShowHideElement;
+    new (): HTMLRcnShowHideElement;
+  };
+
+  interface HTMLRcnSideDrawerElement extends Components.RcnSideDrawer, HTMLStencilElement {}
+  var HTMLRcnSideDrawerElement: {
+    prototype: HTMLRcnSideDrawerElement;
+    new (): HTMLRcnSideDrawerElement;
   };
 
   interface HTMLElementTagNameMap {
-    'pd-side-drawer': HTMLPdSideDrawerElement
+    'rcn-show-hide': HTMLRcnShowHideElement
+    'rcn-side-drawer': HTMLRcnSideDrawerElement
   }
 
   interface ElementTagNameMap {
-    'pd-side-drawer': HTMLPdSideDrawerElement;
+    'rcn-show-hide': HTMLRcnShowHideElement;
+    'rcn-side-drawer': HTMLRcnSideDrawerElement;
   }
 
 

@@ -14,20 +14,21 @@
     nav a {
       display: block;
       margin-bottom: 0.5em;
+      text-decoration: none;
     }
   </style>
   <script src="/build/mycomponent.js"></script>
 </head>
 
 <body>
-  <pd-side-drawer name="Menu">
+
+  <rcn-side-drawer id="side-nav" hidden>
     <nav>
       <a href="#">A link</a>
       <a href="#">Another link</a>
       <a href="#">A third link</a>
     </nav>
-  </pd-side-drawer>
-
+  </rcn-side-drawer>
 
   <script>
 

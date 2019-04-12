@@ -1,0 +1,30 @@
+:host(.close) {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+:host(.close) button {
+  border: none;
+  background: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+}
+
+:host(.backdrop) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 0;
+  background: black;
+  opacity: 0.5;
+}
+
+:host(.backdrop) button {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
