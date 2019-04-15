@@ -7,7 +7,7 @@ aside {
   width: 30rem;
   max-width: 80%;
   height: 100vh;
-  background: ghostwhite;
+  background: #555;
   box-shadow: 0 0 1em rgba(0,0,0,0.7);
   padding: 1em;
   z-index: 10;

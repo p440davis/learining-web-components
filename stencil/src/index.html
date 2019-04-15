@@ -8,12 +8,14 @@
   <style>
     body {
       font-family: sans-serif;
-      background-color: gainsboro;
+      color: white;
+      background-color: #555;
     }
 
-    nav a {
+    rcn-side-drawer a {
       display: block;
-      margin-bottom: 0.5em;
+      margin-top: 0.5em;
+      color: white;
       text-decoration: none;
     }
   </style>
@@ -22,13 +24,14 @@
 
 <body>
 
+
   <rcn-side-drawer id="side-nav" hidden>
-    <nav>
-      <a href="#">A link</a>
-      <a href="#">Another link</a>
-      <a href="#">A third link</a>
-    </nav>
+    <a href="#">A link</a>
+    <a href="#">Another link</a>
+    <a href="#">A third link</a>
   </rcn-side-drawer>
+
+  <pd-stock-price></pd-stock-price>
 
   <script>
 

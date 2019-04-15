@@ -25,17 +25,31 @@ export namespace Components {
   interface RcnSideDrawerAttributes extends StencilHTMLAttributes {
     'id'?: string;
   }
+
+  interface PdStockPrice {}
+  interface PdStockPriceAttributes extends StencilHTMLAttributes {}
+
+  interface RcnTooltip {
+    'tip': string;
+  }
+  interface RcnTooltipAttributes extends StencilHTMLAttributes {
+    'tip'?: string;
+  }
 }
 
 declare global {
   interface StencilElementInterfaces {
     'RcnShowHide': Components.RcnShowHide;
     'RcnSideDrawer': Components.RcnSideDrawer;
+    'PdStockPrice': Components.PdStockPrice;
+    'RcnTooltip': Components.RcnTooltip;
   }
 
   interface StencilIntrinsicElements {
     'rcn-show-hide': Components.RcnShowHideAttributes;
     'rcn-side-drawer': Components.RcnSideDrawerAttributes;
+    'pd-stock-price': Components.PdStockPriceAttributes;
+    'rcn-tooltip': Components.RcnTooltipAttributes;
   }
 
 
@@ -51,14 +65,30 @@ declare global {
     new (): HTMLRcnSideDrawerElement;
   };
 
+  interface HTMLPdStockPriceElement extends Components.PdStockPrice, HTMLStencilElement {}
+  var HTMLPdStockPriceElement: {
+    prototype: HTMLPdStockPriceElement;
+    new (): HTMLPdStockPriceElement;
+  };
+
+  interface HTMLRcnTooltipElement extends Components.RcnTooltip, HTMLStencilElement {}
+  var HTMLRcnTooltipElement: {
+    prototype: HTMLRcnTooltipElement;
+    new (): HTMLRcnTooltipElement;
+  };
+
   interface HTMLElementTagNameMap {
     'rcn-show-hide': HTMLRcnShowHideElement
     'rcn-side-drawer': HTMLRcnSideDrawerElement
+    'pd-stock-price': HTMLPdStockPriceElement
+    'rcn-tooltip': HTMLRcnTooltipElement
   }
 
   interface ElementTagNameMap {
     'rcn-show-hide': HTMLRcnShowHideElement;
     'rcn-side-drawer': HTMLRcnSideDrawerElement;
+    'pd-stock-price': HTMLPdStockPriceElement;
+    'rcn-tooltip': HTMLRcnTooltipElement;
   }
 
 
