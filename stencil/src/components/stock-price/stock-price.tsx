@@ -1,4 +1,4 @@
-import { Component, State, Prop } from "@stencil/core";
+import { Component, State, Prop, Watch } from "@stencil/core";
 import { AV_API_KEY } from "../../global/global";
 
 @Component({
@@ -7,14 +7,21 @@ import { AV_API_KEY } from "../../global/global";
   shadow: true
 })
 export class StockPrice {
-  @Prop() stockSymbol: string
+  @Prop({ mutable: true, reflectToAttr: true }) stockSymbol: string
+
+  @Watch('stockSymbol')
+  stockSymbolChanged(newVal: string, oldVal: string) {
+    if (newVal && newVal !== oldVal) {
+      this.fetchStockPrice(newVal)
+      this.stockInput = newVal
+    }
+  }
 
   @State() fetchedPrice: number
   @State() stockInput: string
   @State() validInput = false
   @State() error: string
 
-  initialStockSymbol: string
   apiUrl = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE"
 
   onStockInput(e: Event) {
@@ -24,7 +31,7 @@ export class StockPrice {
 
   onFetchStockPrice(e: Event) {
     e.preventDefault()
-    this.fetchStockPrice(this.stockInput)
+    this.stockSymbol = this.stockInput
   }
 
   componentWillLoad() {
@@ -37,16 +44,6 @@ export class StockPrice {
   componentDidLoad() {
     if (this.stockSymbol) {
       this.fetchStockPrice(this.stockSymbol)
-      this.initialStockSymbol = this.stockSymbol;
-    }
-  }
-
-  componentDidUpdate() {
-    if (this.stockSymbol !== this.initialStockSymbol) {
-      this.fetchStockPrice(this.stockSymbol)
-      this.initialStockSymbol = this.stockSymbol
-      this.stockInput = this.stockSymbol
-      this.validInput = true
     }
   }
 
