@@ -26,8 +26,12 @@ export namespace Components {
     'id'?: string;
   }
 
-  interface PdStockPrice {}
-  interface PdStockPriceAttributes extends StencilHTMLAttributes {}
+  interface PdStockPrice {
+    'stockSymbol': string;
+  }
+  interface PdStockPriceAttributes extends StencilHTMLAttributes {
+    'stockSymbol'?: string;
+  }
 
   interface RcnTooltip {
     'tip': string;

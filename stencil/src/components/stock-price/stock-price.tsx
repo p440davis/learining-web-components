@@ -1,4 +1,4 @@
-import { Component, State } from "@stencil/core";
+import { Component, State, Prop } from "@stencil/core";
 import { AV_API_KEY } from "../../global/global";
 
 @Component({
@@ -7,10 +7,14 @@ import { AV_API_KEY } from "../../global/global";
   shadow: true
 })
 export class StockPrice {
+  @Prop() stockSymbol: string
+
   @State() fetchedPrice: number
   @State() stockInput: string
   @State() validInput = false
+  @State() error: string
 
+  initialStockSymbol: string
   apiUrl = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE"
 
   onStockInput(e: Event) {
@@ -20,7 +24,33 @@ export class StockPrice {
 
   onFetchStockPrice(e: Event) {
     e.preventDefault()
-    const stockSymbol = this.stockInput
+    this.fetchStockPrice(this.stockInput)
+  }
+
+  componentWillLoad() {
+    if (this.stockSymbol) {
+      this.stockInput = this.stockSymbol
+      this.validInput = true
+    }
+  }
+
+  componentDidLoad() {
+    if (this.stockSymbol) {
+      this.fetchStockPrice(this.stockSymbol)
+      this.initialStockSymbol = this.stockSymbol;
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.stockSymbol !== this.initialStockSymbol) {
+      this.fetchStockPrice(this.stockSymbol)
+      this.initialStockSymbol = this.stockSymbol
+      this.stockInput = this.stockSymbol
+      this.validInput = true
+    }
+  }
+
+  fetchStockPrice(stockSymbol: string) {
     fetch(`${this.apiUrl}&symbol=${stockSymbol}&apikey=${AV_API_KEY}`)
       .then(response => {
         if (response.status !== 200) {
@@ -32,14 +62,21 @@ export class StockPrice {
         if (!responseObj["Global Quote"]["05. price"]) {
           throw new Error('Invalid symbol!')
         }
+        this.error = null
         this.fetchedPrice = +responseObj["Global Quote"]["05. price"]
       })
-      .catch(error => {
-        console.log(error)
+      .catch(err => {
+        this.error = err.message;
       })
   }
 
   render() {
+    let dataContent = <p>&nbsp;</p>
+    if (this.error) {
+      dataContent = <p>{this.error}</p>
+    } else if (this.fetchedPrice) {
+      dataContent = <p>Price: ${this.fetchedPrice}</p>
+    }
     return [
       <form onSubmit={this.onFetchStockPrice.bind(this)}>
         <input
@@ -49,7 +86,7 @@ export class StockPrice {
         />
         <button type="submit" disabled={!this.validInput}>Fetch price</button>
       </form>,
-      <p>Price: ${this.fetchedPrice}</p>
+      dataContent
     ]
   }
 }
