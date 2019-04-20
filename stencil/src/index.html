@@ -35,7 +35,9 @@
   <pd-stock-price stock-symbol="MSFT"></pd-stock-price>
 
   <script>
-
+    document.addEventListener("pdStockSelected", e => {
+      console.log(e.detail)
+    })
   </script>
 </body>
 

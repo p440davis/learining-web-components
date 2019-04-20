@@ -3,5 +3,9 @@
   width: max-content;
   margin-top: 1rem;
   padding: 0.5rem;
-  background-color: black;
+  background-color: seagreen;
+}
+
+:host(.error) {
+  background-color: mediumvioletred;
 }

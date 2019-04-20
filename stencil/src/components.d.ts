@@ -27,7 +27,9 @@ export namespace Components {
   }
 
   interface PdStockFinder {}
-  interface PdStockFinderAttributes extends StencilHTMLAttributes {}
+  interface PdStockFinderAttributes extends StencilHTMLAttributes {
+    'onPdStockSelected'?: (event: CustomEvent<string>) => void;
+  }
 
   interface PdStockPrice {
     'stockSymbol': string;

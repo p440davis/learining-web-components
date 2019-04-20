@@ -1,4 +1,4 @@
-import { Component, State, Prop, Watch } from "@stencil/core";
+import { Component, State, Prop, Watch, Listen } from "@stencil/core";
 import { AV_API_KEY } from "../../global/global";
 
 @Component({
@@ -14,6 +14,7 @@ export class StockPrice {
     if (newVal && newVal !== oldVal) {
       this.fetchStockPrice(newVal)
       this.stockInput = newVal
+      this.validInput = true
     }
   }
 
@@ -47,6 +48,14 @@ export class StockPrice {
     }
   }
 
+  @Listen("body:pdStockSelected")
+  onStockSymbolSelected(e: CustomEvent) {
+    console.log("selected")
+    if (e.detail && e.detail !== this.stockSymbol) {
+      this.stockSymbol = e.detail
+    }
+  }
+
   fetchStockPrice(stockSymbol: string) {
     fetch(`${this.apiUrl}&symbol=${stockSymbol}&apikey=${AV_API_KEY}`)
       .then(response => {
@@ -64,7 +73,12 @@ export class StockPrice {
       })
       .catch(err => {
         this.error = err.message;
+        this.fetchedPrice = null;
       })
+  }
+
+  hostData() {
+    return { class: this.error && "error" }
   }
 
   render() {

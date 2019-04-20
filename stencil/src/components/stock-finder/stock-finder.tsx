@@ -1,4 +1,4 @@
-import { Component, State } from "@stencil/core";
+import { Component, State, Event, EventEmitter } from "@stencil/core";
 import { AV_API_KEY } from "../../global/global";
 
 @Component({
@@ -11,6 +11,8 @@ export class StockFinder {
   apiUrl = 'https://www.alphavantage.co/query?function=SYMBOL_SEARCH' //&keywords=BA&apikey=demo
 
   @State() results: { symbol: string, name: string }[] = []
+
+  @Event({ bubbles: true, composed: true }) pdStockSelected: EventEmitter<string>;
 
   onSearchSubmit(e: Event) {
     e.preventDefault()
@@ -25,6 +27,11 @@ export class StockFinder {
         console.log(err);
       })
   }
+
+  onSelectSymbol(symbol: string) {
+    this.pdStockSelected.emit(symbol)
+  }
+
   render() {
     return [
       <form onSubmit={this.onSearchSubmit.bind(this)}>
@@ -34,7 +41,7 @@ export class StockFinder {
         />
         <button type="submit">Search</button>
       </form>,
-      this.results.map(item => <p>{item.symbol}: {item.name}</p>)
+      this.results.map(item => <p onClick={this.onSelectSymbol.bind(this, item.symbol)}>{item.symbol}: {item.name}</p>)
     ]
   }
 }
