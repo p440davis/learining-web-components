@@ -22,6 +22,7 @@ export class StockPrice {
   @State() stockInput: string
   @State() validInput = false
   @State() error: string
+  @State() loading = false
 
   apiUrl = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE"
 
@@ -57,6 +58,7 @@ export class StockPrice {
   }
 
   fetchStockPrice(stockSymbol: string) {
+    this.loading = true
     fetch(`${this.apiUrl}&symbol=${stockSymbol}&apikey=${AV_API_KEY}`)
       .then(response => {
         if (response.status !== 200) {
@@ -70,10 +72,12 @@ export class StockPrice {
         }
         this.error = null
         this.fetchedPrice = +responseObj["Global Quote"]["05. price"]
+        this.loading = false
       })
       .catch(err => {
-        this.error = err.message;
-        this.fetchedPrice = null;
+        this.error = err.message
+        this.fetchedPrice = null
+        this.loading = false
       })
   }
 
@@ -83,7 +87,9 @@ export class StockPrice {
 
   render() {
     let dataContent = <p>&nbsp;</p>
-    if (this.error) {
+    if (this.loading) {
+      dataContent = <pd-spinner />
+    } else if (this.error) {
       dataContent = <p>{this.error}</p>
     } else if (this.fetchedPrice) {
       dataContent = <p>Price: ${this.fetchedPrice}</p>
@@ -95,7 +101,7 @@ export class StockPrice {
           value={this.stockInput}
           onInput={this.onStockInput.bind(this)}
         />
-        <button type="submit" disabled={!this.validInput}>Fetch price</button>
+        <button type="submit" disabled={!this.validInput || this.loading}>Fetch price</button>
       </form>,
       dataContent
     ]

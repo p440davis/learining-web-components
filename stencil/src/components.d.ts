@@ -26,6 +26,9 @@ export namespace Components {
     'id'?: string;
   }
 
+  interface PdSpinner {}
+  interface PdSpinnerAttributes extends StencilHTMLAttributes {}
+
   interface PdStockFinder {}
   interface PdStockFinderAttributes extends StencilHTMLAttributes {
     'onPdStockSelected'?: (event: CustomEvent<string>) => void;
@@ -50,6 +53,7 @@ declare global {
   interface StencilElementInterfaces {
     'RcnShowHide': Components.RcnShowHide;
     'RcnSideDrawer': Components.RcnSideDrawer;
+    'PdSpinner': Components.PdSpinner;
     'PdStockFinder': Components.PdStockFinder;
     'PdStockPrice': Components.PdStockPrice;
     'RcnTooltip': Components.RcnTooltip;
@@ -58,6 +62,7 @@ declare global {
   interface StencilIntrinsicElements {
     'rcn-show-hide': Components.RcnShowHideAttributes;
     'rcn-side-drawer': Components.RcnSideDrawerAttributes;
+    'pd-spinner': Components.PdSpinnerAttributes;
     'pd-stock-finder': Components.PdStockFinderAttributes;
     'pd-stock-price': Components.PdStockPriceAttributes;
     'rcn-tooltip': Components.RcnTooltipAttributes;
@@ -74,6 +79,12 @@ declare global {
   var HTMLRcnSideDrawerElement: {
     prototype: HTMLRcnSideDrawerElement;
     new (): HTMLRcnSideDrawerElement;
+  };
+
+  interface HTMLPdSpinnerElement extends Components.PdSpinner, HTMLStencilElement {}
+  var HTMLPdSpinnerElement: {
+    prototype: HTMLPdSpinnerElement;
+    new (): HTMLPdSpinnerElement;
   };
 
   interface HTMLPdStockFinderElement extends Components.PdStockFinder, HTMLStencilElement {}
@@ -97,6 +108,7 @@ declare global {
   interface HTMLElementTagNameMap {
     'rcn-show-hide': HTMLRcnShowHideElement
     'rcn-side-drawer': HTMLRcnSideDrawerElement
+    'pd-spinner': HTMLPdSpinnerElement
     'pd-stock-finder': HTMLPdStockFinderElement
     'pd-stock-price': HTMLPdStockPriceElement
     'rcn-tooltip': HTMLRcnTooltipElement
@@ -105,6 +117,7 @@ declare global {
   interface ElementTagNameMap {
     'rcn-show-hide': HTMLRcnShowHideElement;
     'rcn-side-drawer': HTMLRcnSideDrawerElement;
+    'pd-spinner': HTMLPdSpinnerElement;
     'pd-stock-finder': HTMLPdStockFinderElement;
     'pd-stock-price': HTMLPdStockPriceElement;
     'rcn-tooltip': HTMLRcnTooltipElement;
