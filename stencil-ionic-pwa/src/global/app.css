@@ -21,11 +21,4 @@
 @import "~@ionic/core/css/text-transformation.css";
 @import "~@ionic/core/css/flex-utils.css";
 
-/*
-  The CSS Variables below can be used to theme your app.
-  For more info on CSS variables check out:
-  https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables
-
-  More info about color theming using Ionic:
-  https://beta.ionicframework.com/docs/theming/color-generator
-*/
+@import "./_variables.css";
