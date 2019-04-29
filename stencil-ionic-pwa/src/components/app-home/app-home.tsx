@@ -25,6 +25,8 @@ export class AppHome {
         <ion-button href="/profile/ionic" expand="block">
           Profile page
         </ion-button>
+
+        <a href="/recipes">Recipes</a>
       </ion-content>
     ];
   }

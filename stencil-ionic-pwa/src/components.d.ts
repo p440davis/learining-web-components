@@ -23,6 +23,12 @@ export namespace Components {
     'name'?: string;
   }
 
+  interface AppRecipe {}
+  interface AppRecipeAttributes extends StencilHTMLAttributes {}
+
+  interface AppRecipes {}
+  interface AppRecipesAttributes extends StencilHTMLAttributes {}
+
   interface AppRoot {}
   interface AppRootAttributes extends StencilHTMLAttributes {}
 }
@@ -31,12 +37,16 @@ declare global {
   interface StencilElementInterfaces {
     'AppHome': Components.AppHome;
     'AppProfile': Components.AppProfile;
+    'AppRecipe': Components.AppRecipe;
+    'AppRecipes': Components.AppRecipes;
     'AppRoot': Components.AppRoot;
   }
 
   interface StencilIntrinsicElements {
     'app-home': Components.AppHomeAttributes;
     'app-profile': Components.AppProfileAttributes;
+    'app-recipe': Components.AppRecipeAttributes;
+    'app-recipes': Components.AppRecipesAttributes;
     'app-root': Components.AppRootAttributes;
   }
 
@@ -53,6 +63,18 @@ declare global {
     new (): HTMLAppProfileElement;
   };
 
+  interface HTMLAppRecipeElement extends Components.AppRecipe, HTMLStencilElement {}
+  var HTMLAppRecipeElement: {
+    prototype: HTMLAppRecipeElement;
+    new (): HTMLAppRecipeElement;
+  };
+
+  interface HTMLAppRecipesElement extends Components.AppRecipes, HTMLStencilElement {}
+  var HTMLAppRecipesElement: {
+    prototype: HTMLAppRecipesElement;
+    new (): HTMLAppRecipesElement;
+  };
+
   interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
   var HTMLAppRootElement: {
     prototype: HTMLAppRootElement;
@@ -62,12 +84,16 @@ declare global {
   interface HTMLElementTagNameMap {
     'app-home': HTMLAppHomeElement
     'app-profile': HTMLAppProfileElement
+    'app-recipe': HTMLAppRecipeElement
+    'app-recipes': HTMLAppRecipesElement
     'app-root': HTMLAppRootElement
   }
 
   interface ElementTagNameMap {
     'app-home': HTMLAppHomeElement;
     'app-profile': HTMLAppProfileElement;
+    'app-recipe': HTMLAppRecipeElement;
+    'app-recipes': HTMLAppRecipesElement;
     'app-root': HTMLAppRootElement;
   }
 
