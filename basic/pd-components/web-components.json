@@ -1,0 +1,58 @@
+{
+  "tags": [
+    {
+      "label": "rcn-show-hide",
+      "description": "",
+      "attributes": [
+        {
+          "label": "for",
+          "description": "",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "rcn-side-drawer",
+      "description": "",
+      "attributes": [
+        {
+          "label": "id",
+          "description": "",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "pd-spinner",
+      "description": "",
+      "attributes": []
+    },
+    {
+      "label": "pd-stock-finder",
+      "description": "",
+      "attributes": []
+    },
+    {
+      "label": "pd-stock-price",
+      "description": "",
+      "attributes": [
+        {
+          "label": "stock-symbol",
+          "description": "",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "rcn-tooltip",
+      "description": "",
+      "attributes": [
+        {
+          "label": "tip",
+          "description": "",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

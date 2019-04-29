@@ -1,0 +1,1 @@
+const t=window.pdStencilTutorial.h;class e{render(){return[t("slot",null),t("span",null,this.tip)]}static get is(){return"rcn-tooltip"}static get encapsulation(){return"shadow"}static get properties(){return{tip:{type:String,attr:"tip"}}}static get style(){return""}}export{e as RcnTooltip};

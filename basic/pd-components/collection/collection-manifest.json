@@ -1,0 +1,172 @@
+{
+  "components": [
+    {
+      "tag": "pd-spinner",
+      "dependencies": [],
+      "componentClass": "Spinner",
+      "componentPath": "components/spinner/spinner.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/spinner/spinner.css"
+          ]
+        }
+      },
+      "shadow": true
+    },
+    {
+      "tag": "pd-stock-finder",
+      "dependencies": [
+        "pd-spinner"
+      ],
+      "componentClass": "StockFinder",
+      "componentPath": "components/stock-finder/stock-finder.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/stock-finder/stock-finder.css"
+          ]
+        }
+      },
+      "states": [
+        {
+          "name": "loading"
+        },
+        {
+          "name": "results"
+        }
+      ],
+      "events": [
+        {
+          "event": "pdStockSelected"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "pd-stock-price",
+      "dependencies": [
+        "pd-spinner"
+      ],
+      "componentClass": "StockPrice",
+      "componentPath": "components/stock-price/stock-price.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/stock-price/stock-price.css"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "stockSymbol",
+          "type": "String",
+          "mutable": true,
+          "reflectToAttr": true,
+          "attr": "stock-symbol",
+          "watch": [
+            "stockSymbolChanged"
+          ]
+        }
+      ],
+      "states": [
+        {
+          "name": "error"
+        },
+        {
+          "name": "fetchedPrice"
+        },
+        {
+          "name": "loading"
+        },
+        {
+          "name": "stockInput"
+        },
+        {
+          "name": "validInput"
+        }
+      ],
+      "listeners": [
+        {
+          "event": "body:pdStockSelected",
+          "method": "onStockSymbolSelected",
+          "passive": false,
+          "capture": false
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "rcn-show-hide",
+      "dependencies": [],
+      "componentClass": "ShowHide",
+      "componentPath": "components/show-hide/show-hide.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/show-hide/show-hide.css"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "for",
+          "type": "String",
+          "attr": "for"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "rcn-side-drawer",
+      "dependencies": [
+        "rcn-show-hide"
+      ],
+      "componentClass": "SideDrawer",
+      "componentPath": "components/side-drawer/side-drawer.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/side-drawer/side-drawer.css"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "id",
+          "type": "String",
+          "attr": "id"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "rcn-tooltip",
+      "dependencies": [],
+      "componentClass": "tooltip",
+      "componentPath": "components/tooltip/tooltip.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/tooltip/tooltip.css"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "tip",
+          "type": "String",
+          "attr": "tip"
+        }
+      ],
+      "shadow": true
+    }
+  ],
+  "collections": [],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "0.16.4",
+    "typescriptVersion": "3.2.2"
+  },
+  "bundles": []
+}

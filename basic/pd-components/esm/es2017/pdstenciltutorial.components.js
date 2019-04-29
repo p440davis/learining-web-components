@@ -1,0 +1,2 @@
+// pdStencilTutorial: Host Data, ES Module/es2017 Target
+export const COMPONENTS = [["pd-spinner","l7ergqd7",1,0,1],["pd-stock-finder","7wz4uxjy",1,[["loading",16],["results",16]],1],["pd-stock-price","aovrskz9",1,[["error",16],["fetchedPrice",16],["loading",16],["stockInput",16],["stockSymbol",2,1,"stock-symbol",2],["validInput",16]],1,[["body:pdStockSelected","onStockSymbolSelected"]]],["rcn-show-hide","b7zneaho",1,[["for",1,0,1,2]],1],["rcn-side-drawer","b7zneaho",1,[["id",1,0,1,2]],1],["rcn-tooltip","l7bs5elr",1,[["tip",1,0,1,2]],1]]
