@@ -13,6 +13,34 @@ import 'ionicons';
 
 export namespace Components {
 
+  interface AppRoot {}
+  interface AppRootAttributes extends StencilHTMLAttributes {}
+
+  interface AppHeader {
+    'delete': boolean;
+    'isHome': boolean;
+    'pageTitle': string;
+  }
+  interface AppHeaderAttributes extends StencilHTMLAttributes {
+    'delete'?: boolean;
+    'isHome'?: boolean;
+    'onDeleteClick'?: (event: CustomEvent) => void;
+    'pageTitle'?: string;
+  }
+
+  interface AppRecipe {
+    'id': string;
+    'image': string;
+    'ingredients': string[];
+    'recipeTitle': string;
+  }
+  interface AppRecipeAttributes extends StencilHTMLAttributes {
+    'id'?: string;
+    'image'?: string;
+    'ingredients'?: string[];
+    'recipeTitle'?: string;
+  }
+
   interface AppHome {}
   interface AppHomeAttributes extends StencilHTMLAttributes {}
 
@@ -23,33 +51,52 @@ export namespace Components {
     'name'?: string;
   }
 
-  interface AppRecipe {}
-  interface AppRecipeAttributes extends StencilHTMLAttributes {}
+  interface AppRecipeDetail {}
+  interface AppRecipeDetailAttributes extends StencilHTMLAttributes {}
 
   interface AppRecipes {}
   interface AppRecipesAttributes extends StencilHTMLAttributes {}
-
-  interface AppRoot {}
-  interface AppRootAttributes extends StencilHTMLAttributes {}
 }
 
 declare global {
   interface StencilElementInterfaces {
+    'AppRoot': Components.AppRoot;
+    'AppHeader': Components.AppHeader;
+    'AppRecipe': Components.AppRecipe;
     'AppHome': Components.AppHome;
     'AppProfile': Components.AppProfile;
-    'AppRecipe': Components.AppRecipe;
+    'AppRecipeDetail': Components.AppRecipeDetail;
     'AppRecipes': Components.AppRecipes;
-    'AppRoot': Components.AppRoot;
   }
 
   interface StencilIntrinsicElements {
+    'app-root': Components.AppRootAttributes;
+    'app-header': Components.AppHeaderAttributes;
+    'app-recipe': Components.AppRecipeAttributes;
     'app-home': Components.AppHomeAttributes;
     'app-profile': Components.AppProfileAttributes;
-    'app-recipe': Components.AppRecipeAttributes;
+    'app-recipe-detail': Components.AppRecipeDetailAttributes;
     'app-recipes': Components.AppRecipesAttributes;
-    'app-root': Components.AppRootAttributes;
   }
 
+
+  interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
+  var HTMLAppRootElement: {
+    prototype: HTMLAppRootElement;
+    new (): HTMLAppRootElement;
+  };
+
+  interface HTMLAppHeaderElement extends Components.AppHeader, HTMLStencilElement {}
+  var HTMLAppHeaderElement: {
+    prototype: HTMLAppHeaderElement;
+    new (): HTMLAppHeaderElement;
+  };
+
+  interface HTMLAppRecipeElement extends Components.AppRecipe, HTMLStencilElement {}
+  var HTMLAppRecipeElement: {
+    prototype: HTMLAppRecipeElement;
+    new (): HTMLAppRecipeElement;
+  };
 
   interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {}
   var HTMLAppHomeElement: {
@@ -63,10 +110,10 @@ declare global {
     new (): HTMLAppProfileElement;
   };
 
-  interface HTMLAppRecipeElement extends Components.AppRecipe, HTMLStencilElement {}
-  var HTMLAppRecipeElement: {
-    prototype: HTMLAppRecipeElement;
-    new (): HTMLAppRecipeElement;
+  interface HTMLAppRecipeDetailElement extends Components.AppRecipeDetail, HTMLStencilElement {}
+  var HTMLAppRecipeDetailElement: {
+    prototype: HTMLAppRecipeDetailElement;
+    new (): HTMLAppRecipeDetailElement;
   };
 
   interface HTMLAppRecipesElement extends Components.AppRecipes, HTMLStencilElement {}
@@ -75,26 +122,24 @@ declare global {
     new (): HTMLAppRecipesElement;
   };
 
-  interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
-  var HTMLAppRootElement: {
-    prototype: HTMLAppRootElement;
-    new (): HTMLAppRootElement;
-  };
-
   interface HTMLElementTagNameMap {
+    'app-root': HTMLAppRootElement
+    'app-header': HTMLAppHeaderElement
+    'app-recipe': HTMLAppRecipeElement
     'app-home': HTMLAppHomeElement
     'app-profile': HTMLAppProfileElement
-    'app-recipe': HTMLAppRecipeElement
+    'app-recipe-detail': HTMLAppRecipeDetailElement
     'app-recipes': HTMLAppRecipesElement
-    'app-root': HTMLAppRootElement
   }
 
   interface ElementTagNameMap {
+    'app-root': HTMLAppRootElement;
+    'app-header': HTMLAppHeaderElement;
+    'app-recipe': HTMLAppRecipeElement;
     'app-home': HTMLAppHomeElement;
     'app-profile': HTMLAppProfileElement;
-    'app-recipe': HTMLAppRecipeElement;
+    'app-recipe-detail': HTMLAppRecipeDetailElement;
     'app-recipes': HTMLAppRecipesElement;
-    'app-root': HTMLAppRootElement;
   }
 
 
