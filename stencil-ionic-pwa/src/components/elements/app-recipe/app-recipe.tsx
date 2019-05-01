@@ -11,7 +11,7 @@ export class AppRecipe {
 
   render() {
     return [
-      <ion-item href={"recipes/" + this.id}>
+      <ion-item href={"/recipes/" + this.id}>
         <ion-avatar slot="start">
           <ion-img src={this.image} />
         </ion-avatar>

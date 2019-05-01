@@ -51,8 +51,12 @@ export namespace Components {
     'name'?: string;
   }
 
-  interface AppRecipeDetail {}
-  interface AppRecipeDetailAttributes extends StencilHTMLAttributes {}
+  interface AppRecipeDetail {
+    'name': string;
+  }
+  interface AppRecipeDetailAttributes extends StencilHTMLAttributes {
+    'name'?: string;
+  }
 
   interface AppRecipes {}
   interface AppRecipesAttributes extends StencilHTMLAttributes {}

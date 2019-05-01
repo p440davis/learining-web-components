@@ -33,6 +33,7 @@ export class data {
   }
 
   deleteRecipe(recipeId: string) {
+    console.log(recipeId);
     this.recipes = this.recipes.filter(item => {
       return item.id !== recipeId;
     });
