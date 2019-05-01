@@ -14,6 +14,8 @@
     "test.watch": "stencil test --spec --e2e --watch"
   },
   "dependencies": {
+    "@capacitor/cli": "^1.0.0-beta.22",
+    "@capacitor/core": "^1.0.0-beta.22",
     "@ionic/core": "^4.0.0"
   },
   "devDependencies": {
@@ -22,6 +24,6 @@
     "@types/puppeteer": "1.11.1",
     "jest": "23.6.0",
     "jest-cli": "23.6.0",
-    "puppeteer": "1.11.0"
+    "puppeteer": "^1.15.0"
   }
 }
