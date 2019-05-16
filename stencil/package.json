@@ -1,5 +1,5 @@
 {
-  "name": "stencil",
+  "name": "pd-stencil-test",
   "version": "0.0.1",
   "description": "Stencil Component Starter",
   "module": "dist/esm/index.js",
